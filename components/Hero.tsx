@@ -18,7 +18,7 @@ const stats = [
 ];
 
 const Hero: React.FC<HeroProps> = ({ heroRef }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLElement | null>(null);
   const carRef = useRef<HTMLDivElement | null>(null);
   const line1Ref = useRef<HTMLSpanElement[]>([]);
   const line2Ref = useRef<HTMLSpanElement[]>([]);
@@ -133,7 +133,7 @@ const Hero: React.FC<HeroProps> = ({ heroRef }) => {
   return (
     <section
       ref={(el) => {
-        (containerRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
+        const containerRef = useRef<HTMLElement | null>(null);
         if (heroRef && typeof heroRef === "object") {
           (heroRef as React.MutableRefObject<HTMLElement | null>).current = el;
         }
