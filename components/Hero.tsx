@@ -5,9 +5,6 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-type HeroProps = {
-  heroRef: React.RefObject<HTMLElement>;
-};
 
 const LINE1 = "WELCOME";
 const LINE2_ACCENT = "ITZFIZZ";
@@ -17,7 +14,7 @@ const stats = [
   { value: "98%", label: "Satisfaction" },
 ];
 
-const Hero: React.FC<HeroProps> = ({ heroRef }) => {
+const Hero = React.forwardRef<HTMLElement>((props, heroRef) => {
   const containerRef = useRef<HTMLElement | null>(null);
   const carRef = useRef<HTMLDivElement | null>(null);
   const line1Ref = useRef<HTMLSpanElement[]>([]);
@@ -222,6 +219,6 @@ const Hero: React.FC<HeroProps> = ({ heroRef }) => {
 
     </section>
   );
-};
+});
 
 export default Hero;
