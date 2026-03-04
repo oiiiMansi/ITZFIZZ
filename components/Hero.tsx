@@ -133,9 +133,10 @@ const Hero: React.FC<HeroProps> = ({ heroRef }) => {
   return (
     <section
       ref={(el) => {
-        const containerRef = useRef<HTMLElement | null>(null);
+        containerRef.current = el;
+
         if (heroRef && typeof heroRef === "object") {
-          (heroRef as React.MutableRefObject<HTMLElement | null>).current = el;
+          heroRef.current = el;
         }
       }}
       className="relative bg-black overflow-hidden min-h-screen"
